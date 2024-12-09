@@ -25,7 +25,7 @@ SELECT p.name
 FROM products p
 LEFT JOIN order_items oi ON p.product_id = oi.product_id
 WHERE oi.order_id IS NULL;
---Get the average order value for each customer 
+--Getting the average order value for each customer 
 SELECT c.first_name, c.last_name, round(AVG(o.total_amount)) AS average_order_value
 FROM cusotmers c
 JOIN orders o ON c.cusmtomers_id = o.cusmtomers_id
@@ -35,7 +35,7 @@ SELECT c.first_name, c.last_name
 FROM cusotmers c
 LEFT JOIN orders o ON c.cusmtomers_id = o.customer_id
 WHERE o.order_id IS NULL; 
---List the top 3 products by revenue in each category 
+--Listing the top 3 products by revenue in each category 
 SELECT cat.name AS category_name, p.name AS product_name, SUM(oi.quantity * p.price) AS total_revenue
 FROM categories cat
 JOIN products p ON cat.category_id = p.category_id
@@ -43,7 +43,7 @@ JOIN order_items oi ON p.product_id = oi.product_id
 GROUP BY cat.category_id, p.product_id
 ORDER BY cat.category_id, total_revenue DESC
 LIMIT 3;
---Get the total revenue and total discount given by each salesperson
+--Getting the total revenue and total discount given by each salesperson
 SELECT s.first_name, s.last_name, SUM(o.total_amount) AS total_revenue, SUM(d.amount) AS total_discount
 FROM salespeople s
 JOIN orders o ON s.salesperson_id = o.salesperson_id
