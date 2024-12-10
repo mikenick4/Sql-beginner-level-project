@@ -39,7 +39,7 @@ end_date DATE);
 
 CREATE TABLE order_discounts (
 order_discount_id INT PRIMARY KEY AUTO_INCREMENT,
-order_id INT, -- Foreign key referencing orders
-discount_id INT, -- Foreign key referencing discounts
+order_id INT,
+discount_id INT, 
 FOREIGN KEY (order_id) REFERENCES orders(order_id),
 FOREIGN KEY (discount_id) REFERENCES discounts(discount_id));
